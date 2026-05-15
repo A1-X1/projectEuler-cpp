@@ -31,16 +31,28 @@ std::vector<uint64_t> generatePrimes (uint64_t maximum) {
     }
 
     return primes;
+    
+}
 
+uint64_t sumOfPrimesBelowN(uint64_t maximum) {
+    std::vector<uint64_t> primes = generatePrimes(maximum);
+
+    uint64_t sum = 0;
+    for (uint64_t prime: primes) {
+        if (prime > maximum) {
+            break;
+        }
+        sum += prime;
+    }
+
+    return sum;
 }
 
 int main() {
-    uint64_t target = 10'475'143;
 
-    std::vector<uint64_t> primes = generatePrimes(target);
-    uint64_t result = primes[10'000];
+    uint64_t sumOfPrimes = sumOfPrimesBelowN(2'000'000);
 
-    std::cout << result;
+    std::cout << sumOfPrimes;
 
 
     return 0;
